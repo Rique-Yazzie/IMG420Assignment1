@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cf41dyqkbpbtn"]
+
+[ext_resource type="Texture2D" uid="uid://bkociot7ekalg" path="res://Yazzie_Rique_FantasyAdventure/assests/art/background/BG_09.png" id="1_befgy"]
+
+[node name="Main_Game_Level" type="Node2D" unique_id=1153781259]
+
+[node name="Main_Game_Level_BG" type="Sprite2D" parent="." unique_id=1360935244]
+position = Vector2(574, 321)
+scale = Vector2(0.8272059, 0.8272059)
+texture = ExtResource("1_befgy")

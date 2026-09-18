@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://dqyirgscy3pbg"]
+
+[ext_resource type="Script" uid="uid://d12ua1gn23go2" path="res://start_screen_ui.gd" id="1_c8muk"]
+[ext_resource type="Texture2D" uid="uid://d0gey2lmc5fya" path="res://Yazzie_Rique_FantasyAdventure/assests/art/background/BG_04.png" id="1_djfkk"]
+[ext_resource type="Texture2D" uid="uid://b1m5b7h11hie0" path="res://Yazzie_Rique_FantasyAdventure/assests/art/background/Game Title Logo_transp.png" id="2_djfkk"]
+[ext_resource type="Texture2D" uid="uid://bmtuvqohxdmk3" path="res://Yazzie_Rique_FantasyAdventure/assests/art/badges & icons/Button Rect_green_Start_button.png" id="3_cxevi"]
+[ext_resource type="Texture2D" uid="uid://lxfpgej2o0ge" path="res://Yazzie_Rique_FantasyAdventure/assests/art/badges & icons/Button Rect_green_Highlighted_Start_button.png" id="4_1ndhv"]
+[ext_resource type="Texture2D" uid="uid://b8bsb62bnfnlw" path="res://Yazzie_Rique_FantasyAdventure/assests/art/badges & icons/Button Rect_red_Quit_button.png" id="5_a8m16"]
+[ext_resource type="Texture2D" uid="uid://br46a34yeie88" path="res://Yazzie_Rique_FantasyAdventure/assests/art/badges & icons/Background red highlighted_button.png" id="6_c8muk"]
+
+[sub_resource type="Animation" id="Animation_djfkk"]
+resource_name = "Game_Title_Bounce"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.15, 1.15), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jlgho"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxevi"]
+_data = {
+&"Game_Title_Bounce": SubResource("Animation_djfkk"),
+&"RESET": SubResource("Animation_jlgho")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_djfkk"]
+texture = ExtResource("3_cxevi")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cxevi"]
+texture = ExtResource("4_1ndhv")
+modulate_color = Color(0.7058824, 0.7058824, 0.7058824, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jlgho"]
+texture = ExtResource("4_1ndhv")
+modulate_color = Color(1, 0.9607843, 0.8235294, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c8muk"]
+texture = ExtResource("5_a8m16")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5gt3i"]
+texture = ExtResource("6_c8muk")
+modulate_color = Color(0.7058824, 0.7058824, 0.7058824, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sbvol"]
+texture = ExtResource("6_c8muk")
+modulate_color = Color(1, 0.9607843, 0.8235294, 1)
+
+[node name="StartScreen_ui" type="Control" unique_id=592853538]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c8muk")
+
+[node name="Start_Screen_BG" type="TextureRect" parent="." unique_id=66495388]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 1150.0
+offset_bottom = 648.0
+texture = ExtResource("1_djfkk")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Game_Title_Logo_transp" type="TextureRect" parent="." unique_id=971268737]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -571.5
+offset_top = -4.0
+offset_right = 571.5
+offset_bottom = 459.47827
+grow_horizontal = 2
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_djfkk")
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Game_Title_Logo_transp" unique_id=903915209]
+libraries/ = SubResource("AnimationLibrary_cxevi")
+autoplay = &"Game_Title_Bounce"
+
+[node name="Start_Game_Button" type="Button" parent="." unique_id=1658981830]
+layout_mode = 1
+offset_left = 400.0
+offset_top = 490.0
+offset_right = 504.0
+offset_bottom = 521.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_djfkk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cxevi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jlgho")
+text = "Start Button"
+
+[node name="Quit_Game_Button" type="Button" parent="." unique_id=1979915633]
+layout_mode = 1
+offset_left = 680.0
+offset_top = 490.0
+offset_right = 772.0
+offset_bottom = 521.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_c8muk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5gt3i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sbvol")
+text = "Quit Game"
+
+[node name="QuitConfirmDialog" type="ConfirmationDialog" parent="." unique_id=730747855]
+dialog_text = "Are you sure you want to quit?"
+
+[connection signal="pressed" from="Start_Game_Button" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="Quit_Game_Button" to="." method="_on_quit_game_button_pressed"]
+[connection signal="confirmed" from="QuitConfirmDialog" to="." method="_on_quit_confirm_dialog_confirmed"]
